@@ -88,7 +88,7 @@ Files that land in the quarantine bucket can be reprocessed in the following way
 
 ---
 
-## 📦 Folder Structure (if implemented)
+<!-- ## 📦 Folder Structure (if implemented)
 
 ```
 .
@@ -100,6 +100,7 @@ Files that land in the quarantine bucket can be reprocessed in the following way
 │   └── (optional IaC setup)
 ├── README.md
 ```
+-->
 
 ---
 
