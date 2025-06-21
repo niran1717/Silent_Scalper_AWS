@@ -17,7 +17,7 @@ Silent Scalper responds to incoming job files in real-time, processes and valida
 
 ## 🧱 Architecture Overview
 
-![Architecture Diagram](./assets/silent-scalper-architecture.png) <!-- replace with your diagram path -->
+![Architecture Diagram](./silent-scalper.png) <!-- replace with your diagram path -->
 
 ### 🧑‍💻 User Interaction
 - Users submit job files (e.g., `.json`, `.csv`) through an exposed RESTful API (via API Gateway).
