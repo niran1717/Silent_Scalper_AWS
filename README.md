@@ -10,30 +10,41 @@ Silent Scalper is a fully serverless, event-driven architecture built on AWS to 
 
 1. **📨 Client Request**:  
    External clients interact with the API via **Amazon API Gateway** to initiate a file upload.
+   ![API Gateway](./assets/API_Gateway.png)
 
-2. **🔑 Pre-signed URL Generation**:  
+3. **🔑 Pre-signed URL Generation**:  
    API Gateway triggers a **Lambda function** which generates a secure **pre-signed URL** to upload files directly to an **S3 Input bucket**.
+   ![Presigned URL Function](./assets/lambda1.png)
 
-3. **📤 Direct File Upload**:  
+5. **📤 Direct File Upload**:  
    Clients use the pre-signed URL to **upload the job file** (e.g., `.json`, `.csv`) to the S3 bucket.
-
-4. **📦 File Processing Trigger**:  
+   ![S3 Input](./assets/S3Input.png)
+   
+7. **📦 File Processing Trigger**:  
    The **S3 "Object Created" event** triggers another **Lambda function** to begin processing.
+   ![S3 Event](./assets/S3Event.png)
 
-5. **✅ File Validation & Metadata Extraction**:  
+
+9. **✅ File Validation & Metadata Extraction**:  
    - Validates the file type and structure.
    - Extracts metadata (e.g., job ID, timestamp).
    - Logs important events.
+   ![File Processing Lambda](./assets/Lambda2.png)
 
-6. **📄 Metadata Storage**:  
+10. **📄 Metadata Storage**:  
    All metadata is stored in a **DynamoDB table** for tracking.
+   ![DynamoDB](./assets/DynamoDB.png)
 
-7. **🚫 Invalid File Quarantine**:  
+
+12. **🚫 Invalid File Quarantine**:  
    If validation fails, the file is moved/copied to a **Quarantine S3 Bucket** for future analysis.
+   ![S3 Quarantine](./assets/S3Quarantine.png)
 
-8. **📊 Monitoring & Alerts**:  
+
+14. **📊 Monitoring & Alerts**:  
    - **CloudWatch Logs** track execution details and failures.
    - **CloudWatch Alarms** trigger **SNS notifications** for critical issues.
+   ![SNS Alerts](./assets/SNS.png)
 
 ---
 
@@ -43,13 +54,13 @@ Silent Scalper is a fully serverless, event-driven architecture built on AWS to 
 /Silent_Scalper/
 ├── assets/
 │   └── screenshots and architecture diagrams
-├── frontend/
-│   └── test.html (for manual upload testing via pre-signed URL)
 ├── lambda/
-│   ├── generate_presigned_url.py
-│   └── validate_and_process.py
+│   ├── presigned_url.py
+│   └── fileprocessor.py
 ├── terraform/
-│   └── main.tf (optional IaC setup)
+    ├── main.tf
+    ├── variables.tf
+│   └── outputs.tf (optional IaC setup)
 └── README.md
 ```
 
@@ -57,7 +68,7 @@ Silent Scalper is a fully serverless, event-driven architecture built on AWS to 
 
 ## 📐 Architecture Diagram
 
-![Architecture Diagram](./assets/silent-scalper-architecture.png)
+![Architecture Diagram](./SIlent_Scalper.png)
 
 ---
 
