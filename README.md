@@ -14,7 +14,7 @@ Silent Scalper is a fully serverless, event-driven architecture built on AWS to 
 
 3. **🔑 Pre-signed URL Generation**:  
    API Gateway triggers a **Lambda function** which generates a secure **pre-signed URL** to upload files directly to an **S3 Input bucket**.
-   ![Presigned URL Function](./assets/lambda1.png)
+   ![Presigned URL Function](./assets/Lambda1.png)
 
 5. **📤 Direct File Upload**:  
    Clients use the pre-signed URL to **upload the job file** (e.g., `.json`, `.csv`) to the S3 bucket.
